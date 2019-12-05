@@ -1,7 +1,7 @@
 ###########################################
 #Author: GetParanoid
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 1.2
+#Version: 1.3
 ###########################################
 import time
 import os
@@ -20,8 +20,8 @@ VanillaPak = ModFolder + '/Vanilla Files/MCC-WindowsNoEditor.pak'
 VanillaMap = ModFolder +'/Vanilla Files/forge_halo.map'
 
 #Get MCC file locations for mods and maps
-targetPak = 'MCC/Content/Paks'
-targetMap = 'haloreach/maps'
+targetPak = 'MCC/Content/Paks/'
+targetMap = 'haloreach/maps/'
 
 def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
@@ -30,14 +30,18 @@ def copyFiles():
         os.system('cls')
         if userInput == "1":
             print("Copying Vanilla Files to MCC")
-            shutil.copy(os.path.join(steamdir + VanillaPak), os.path.join(steamdir + targetPak, 'MCC-WindowsNoEditor.pak'))
-            shutil.copy(os.path.join(steamdir + VanillaMap), os.path.join(steamdir + targetMap, 'forge_halo.map'))
+            os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+            os.unlink(steamdir + targetMap + 'forge_halo.map')
+            os.link(steamdir + VanillaPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+            os.link(steamdir + VanillaMap, steamdir + targetMap + 'forge_halo.map')
             print("COMPLETE")
             os.system('pause')
         elif userInput == "2":
             print("Copying Modded Files to MCC")
-            shutil.copy(os.path.join(steamdir + ModPak), os.path.join(steamdir + targetPak, 'MCC-WindowsNoEditor.pak'))
-            shutil.copy(os.path.join(steamdir + ModMap), os.path.join(steamdir + targetMap, 'forge_halo.map'))
+            os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+            os.unlink(steamdir + targetMap + 'forge_halo.map')
+            os.link(steamdir + ModPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+            os.link(steamdir + ModMap, steamdir + targetMap + 'forge_halo.map')
             print("COMPLETE")
             os.system('pause')
         else:
