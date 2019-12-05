@@ -1,7 +1,7 @@
 ###########################################
 #Author: GetParanoid
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 1.4
+#Version: 1.5
 ###########################################
 import time
 import os
@@ -12,8 +12,8 @@ steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief 
 #Get Modded file directory(Using steamdir as base directory)
 ModFolder = 'MODS'
 ModPak = ModFolder + '/MCC-WindowsNoEditor.pak'
-
 ModMap = ModFolder + '/forge_halo.map'
+
 #Get Vanilla Files Directory(Using steamdir as base directory)
 VanillaFiles = "/Vanilla Files"
 VanillaPak = ModFolder + '/Vanilla Files/MCC-WindowsNoEditor.pak'
@@ -25,12 +25,14 @@ targetMap = 'haloreach/maps/'
 
 def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
-    userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
     if os.path.isdir(steamdir + ModFolder) & os.path.isdir(steamdir + ModFolder + VanillaFiles)  == 1:
+        print("Directories = OK")
         if os.path.isfile(steamdir + VanillaPak) & os.path.isfile(steamdir + VanillaMap) & os.path.isfile(steamdir + ModPak) & os.path.isfile(steamdir + ModMap) == 1:
-            os.system('cls')
+            print("Files in MODS folder = OK\n")
+            userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
             if userInput == "1":
-                print("Copying Vanilla Files to MCC")
+                os.system('cls')
+                print("Syncing Vanilla Files to MCC")
                 os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
                 os.unlink(steamdir + targetMap + 'forge_halo.map')
                 os.link(steamdir + VanillaPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
@@ -38,7 +40,8 @@ def copyFiles():
                 print("COMPLETE")
                 os.system('pause')
             elif userInput == "2":
-                print("Copying Modded Files to MCC")
+                os.system('cls')
+                print("Syncing Modded Files to MCC")
                 os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
                 os.unlink(steamdir + targetMap + 'forge_halo.map')
                 os.link(steamdir + ModPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
@@ -46,6 +49,7 @@ def copyFiles():
                 print("COMPLETE")
                 os.system('pause')
             else:
+                os.system('cls')
                 print("Invalid input")
                 time.sleep(2)
                 os.system('cls')
