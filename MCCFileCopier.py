@@ -1,14 +1,19 @@
 import time
 import os
 import shutil
+#Get Steam Directory
+steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/"
 
-ModPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/MCC-WindowsNoEditor.pak'
-ModMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/forge_halo.map'
-VanillaPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/Vanilla Files/MCC-WindowsNoEditor.pak'
-VanillaMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/Vanilla Files/forge_halo.map'
+#Get Modded file directory
+ModPak = 'MODS/MCC-WindowsNoEditor.pak'
+ModMap = 'MODS/forge_halo.map'
+#Get Vanilla Files Directory
+VanillaPak = 'MODS/Vanilla Files/MCC-WindowsNoEditor.pak'
+VanillaMap = 'MODS/Vanilla Files/forge_halo.map'
 
-targetPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MCC/Content/Paks'
-targetMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/haloreach/maps'
+#Get MCC file locations for mods and maps
+targetPak = 'MCC/Content/Paks'
+targetMap = 'haloreach/maps'
 
 def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
@@ -16,14 +21,14 @@ def copyFiles():
     os.system('cls')
     if userInput == "1":
         print("Copying Vanilla Files to MCC")
-        shutil.copy(os.path.join(VanillaPak), os.path.join(targetPak, 'MCC-WindowsNoEditor.pak'))
-        shutil.copy(os.path.join(VanillaMap), os.path.join(targetMap, 'forge_halo.map'))
+        shutil.copy(os.path.join(steamdir + VanillaPak), os.path.join(steamdir + targetPak, 'MCC-WindowsNoEditor.pak'))
+        shutil.copy(os.path.join(steamdir + VanillaMap), os.path.join(steamdir + targetMap, 'forge_halo.map'))
         print("COMPLETE")
         os.system('pause')
     elif userInput == "2":
         print("Copying Modded Files to MCC")
-        shutil.copy(os.path.join(ModPak), os.path.join(targetPak, 'MCC-WindowsNoEditor.pak'))
-        shutil.copy(os.path.join(ModMap), os.path.join(targetMap, 'forge_halo.map'))
+        shutil.copy(os.path.join(steamdir + ModPak), os.path.join(steamdir + targetPak, 'MCC-WindowsNoEditor.pak'))
+        shutil.copy(os.path.join(steamdir + ModMap), os.path.join(steamdir + targetMap, 'forge_halo.map'))
         print("COMPLETE")
         os.system('pause')
     else:
