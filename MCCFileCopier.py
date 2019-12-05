@@ -4,10 +4,10 @@ import shutil
 #Get Steam Directory
 steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/"
 
-#Get Modded file directory
+#Get Modded file directory(Using steamdir as base directory)
 ModPak = 'MODS/MCC-WindowsNoEditor.pak'
 ModMap = 'MODS/forge_halo.map'
-#Get Vanilla Files Directory
+#Get Vanilla Files Directory(Using steamdir as base directory)
 VanillaPak = 'MODS/Vanilla Files/MCC-WindowsNoEditor.pak'
 VanillaMap = 'MODS/Vanilla Files/forge_halo.map'
 
