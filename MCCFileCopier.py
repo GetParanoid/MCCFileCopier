@@ -10,7 +10,9 @@ VanillaMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chie
 targetPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MCC/Content/Paks'
 targetMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/haloreach/maps'
 
-def copyFiles(userInput):
+def copyFiles():
+    print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
+    userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
     os.system('cls')
     if userInput == "1":
         print("Copying Vanilla Files to MCC")
@@ -26,10 +28,10 @@ def copyFiles(userInput):
         os.system('pause')
     else:
         print("Invalid input")
-        os.system('pause')
+        time.sleep(2)
+        os.system('cls')
+        copyFiles()
 
-print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
-userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
-copyFiles(userInput)
+copyFiles()
 
 
