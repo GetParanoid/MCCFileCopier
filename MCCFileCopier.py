@@ -2,7 +2,7 @@
 #Author: GetParanoid
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
 #Version: 1.2
-##########################################
+###########################################
 import time
 import os
 import shutil
@@ -15,6 +15,7 @@ ModPak = ModFolder + '/MCC-WindowsNoEditor.pak'
 
 ModMap = ModFolder + '/forge_halo.map'
 #Get Vanilla Files Directory(Using steamdir as base directory)
+VanillaFiles = "/Vanilla Files"
 VanillaPak = ModFolder + '/Vanilla Files/MCC-WindowsNoEditor.pak'
 VanillaMap = ModFolder +'/Vanilla Files/forge_halo.map'
 
@@ -25,7 +26,7 @@ targetMap = 'haloreach/maps'
 def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
     userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
-    if os.path.isdir(steamdir + ModFolder) == 1:
+    if os.path.isdir(steamdir + ModFolder) & os.path.isdir(steamdir + ModFolder + VanillaFiles)  == 1:
         os.system('cls')
         if userInput == "1":
             print("Copying Vanilla Files to MCC")
