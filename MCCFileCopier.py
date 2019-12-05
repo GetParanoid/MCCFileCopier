@@ -5,7 +5,7 @@
 ###########################################
 import time
 import os
-import shutil
+
 #Get Steam Directory
 steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/"
 
