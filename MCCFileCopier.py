@@ -1,4 +1,4 @@
-#####################v######################
+###########################################
 #Author: GetParanoid
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
 #Version: 1.1
