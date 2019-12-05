@@ -6,7 +6,7 @@
 import time
 import os
 
-#Get Steam Directory
+#Get MCC Install Directory(Not steam)
 steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/"
 
 #Get Modded file directory(Using steamdir as base directory)
