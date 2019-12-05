@@ -5,7 +5,7 @@ import shutil
 ModPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/MCC-WindowsNoEditor.pak'
 ModMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/forge_halo.map'
 VanillaPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/Vanilla Files/MCC-WindowsNoEditor.pak'
-VanillaMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS\Vanilla Files/forge_halo.map'
+VanillaMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MODS/Vanilla Files/forge_halo.map'
 
 targetPak = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/MCC/Content/Paks'
 targetMap = 'C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/haloreach/maps'
