@@ -1,12 +1,12 @@
 ###########################################
 #Author: GetParanoid
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 1.3
+#Version: 1.4
 ###########################################
 import time
 import os
 
-#Get MCC Install Directory(Not steam)
+#Get Steam Directory
 steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/"
 
 #Get Modded file directory(Using steamdir as base directory)
@@ -27,28 +27,32 @@ def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
     userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
     if os.path.isdir(steamdir + ModFolder) & os.path.isdir(steamdir + ModFolder + VanillaFiles)  == 1:
-        os.system('cls')
-        if userInput == "1":
-            print("Copying Vanilla Files to MCC")
-            os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-            os.unlink(steamdir + targetMap + 'forge_halo.map')
-            os.link(steamdir + VanillaPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-            os.link(steamdir + VanillaMap, steamdir + targetMap + 'forge_halo.map')
-            print("COMPLETE")
-            os.system('pause')
-        elif userInput == "2":
-            print("Copying Modded Files to MCC")
-            os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-            os.unlink(steamdir + targetMap + 'forge_halo.map')
-            os.link(steamdir + ModPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-            os.link(steamdir + ModMap, steamdir + targetMap + 'forge_halo.map')
-            print("COMPLETE")
-            os.system('pause')
-        else:
-            print("Invalid input")
-            time.sleep(2)
+        if os.path.isfile(steamdir + VanillaPak) & os.path.isfile(steamdir + VanillaMap) & os.path.isfile(steamdir + ModPak) & os.path.isfile(steamdir + ModMap) == 1:
             os.system('cls')
-            copyFiles()
+            if userInput == "1":
+                print("Copying Vanilla Files to MCC")
+                os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+                os.unlink(steamdir + targetMap + 'forge_halo.map')
+                os.link(steamdir + VanillaPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+                os.link(steamdir + VanillaMap, steamdir + targetMap + 'forge_halo.map')
+                print("COMPLETE")
+                os.system('pause')
+            elif userInput == "2":
+                print("Copying Modded Files to MCC")
+                os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+                os.unlink(steamdir + targetMap + 'forge_halo.map')
+                os.link(steamdir + ModPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
+                os.link(steamdir + ModMap, steamdir + targetMap + 'forge_halo.map')
+                print("COMPLETE")
+                os.system('pause')
+            else:
+                print("Invalid input")
+                time.sleep(2)
+                os.system('cls')
+                copyFiles()
+        else:
+            print("Missing Files - Either Vanilla[or]Modded forge_halo.map or MCC-WindowsNoEditor.pak not found within MODS folder")
+            os.system('pause')
     else:
         print("Improper File Structure, aborting.")
         os.system('pause')
