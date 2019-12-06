@@ -14,29 +14,38 @@ print('MCC Install Location: ' + steamdir)
 print()
 
 #Get Modded file directory(Using steamdir as base directory)
-ModFolder = 'MODS'
+ModFolder = '/MODS'
 
 #Get Vanilla Files Directory(Using steamdir as base directory)
-VanillaFiles =ModFolder + "/Vanilla Files"
+VanillaFiles = ModFolder + "/Vanilla Files"
 
 #create an object for each mod
-class pak():
+class Pak():
     fileName = 'MCC-WindowsNoEditor.pak'
     target = 'MCC/Content/Paks/'
-class map():
+class Map():
     fileName = 'forge_halo.map'
     target = 'haloreach/maps/'
-class unlock():
-    fileName = 'unlockdb.xml'
-    target = 'data/ui/'
-
-#TODO: impliment file checking
-#make sure everything is in place
-def verifyFiles():
-    return true
 
 #make a list of all mods
-modList = [pak, map, unlock]
+modList = [Pak, Map]
+
+def verifyFiles():
+    if not os.path.isdir(steamdir + ModFolder):
+        print('MODS folder not found')
+        return False
+    if not os.path.isdir(steamdir + VanillaFiles):
+        print('Vanilla Files folder not found')
+        return False
+    for mod in modList:
+        if not os.path.isfile(steamdir + ModFolder + '/' + mod.fileName):
+            print(mod.fileName + ' not found in MODS folder')
+            return False
+        if not os.path.isfile(steamdir + VanillaFiles + '/' + mod.fileName):
+            print(mod.fileName + ' not found in Vanilla Files folder')
+            return False
+    print("Files in MODS folder = OK")
+    return True
 
 def unlinkFiles(mod):
     os.unlink(steamdir + mod.target + mod.fileName)
@@ -74,7 +83,6 @@ def copyFiles():
             os.system('cls')
             copyFiles()
     else:
-        print("Improper File Structure, aborting.")
         os.system('pause')
 
 copyFiles()
