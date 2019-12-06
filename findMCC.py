@@ -27,7 +27,7 @@ def findMCC():
         findSteamx86 = "C:\\Program Files (x86)\\"
         steamdir = ''
         yes = ['y','ye','yes']
-        uInput = input("Is Halo: MCC located in the default Steam location?")
+        uInput = input("Is Halo: MCC located in the default Steam location?[Yes or No]\n")
         global location
         if uInput.lower() in yes:
             if findDir('mcclauncher.exe', findSteamx86):
