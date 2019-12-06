@@ -15,70 +15,66 @@ print()
 
 #Get Modded file directory(Using steamdir as base directory)
 ModFolder = 'MODS'
-ModPak = ModFolder + '/MCC-WindowsNoEditor.pak'
-ModMap = ModFolder + '/forge_halo.map'
-ModUnlock = ModFolder + '/unlockdb.xml'
 
 #Get Vanilla Files Directory(Using steamdir as base directory)
-VanillaFiles = "/Vanilla Files"
-VanillaPak = ModFolder + '/Vanilla Files/MCC-WindowsNoEditor.pak'
-VanillaMap = ModFolder +'/Vanilla Files/forge_halo.map'
-VanillaUnlock = ModFolder + '/Vanilla Files/unlockdb.xml'
+VanillaFiles =ModFolder + "/Vanilla Files"
 
-#Get MCC file locations for mods and maps
-targetPak = 'MCC/Content/Paks/'
-targetMap = 'haloreach/maps/'
-targetUnlock = 'data/ui/'
+#create an object for each mod
+class pak():
+    fileName = 'MCC-WindowsNoEditor.pak'
+    target = 'MCC/Content/Paks/'
+class map():
+    fileName = 'forge_halo.map'
+    target = 'haloreach/maps/'
+class unlock():
+    fileName = 'unlockdb.xml'
+    target = 'data/ui/'
 
-def unlinkFiles():
-    os.unlink(steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-    os.unlink(steamdir + targetMap + 'forge_halo.map')
-    os.unlink(steamdir + targetUnlock + 'unlockdb.xml')
+#TODO: impliment file checking
+#make sure everything is in place
+def verifyFiles():
+    return null
 
-def linkFiles(modded):
+#make a list of all mods
+modList = [pak, map, unlock]
+
+def unlinkFiles(mod):
+    os.unlink(steamdir + mod.target + mod.fileName)
+
+def linkFiles(mod, modded):
     if (modded):
-        os.link(steamdir + ModPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-        os.link(steamdir + ModMap, steamdir + targetMap + 'forge_halo.map')
-        os.link(steamdir + ModUnlock, steamdir + targetUnlock + 'unlockdb.xml')
+        os.link(steamdir + ModFolder + '/' + mod.fileName, steamdir + mod.target + mod.fileName)
     else:
-        os.link(steamdir + VanillaPak, steamdir + targetPak + 'MCC-WindowsNoEditor.pak')
-        os.link(steamdir + VanillaMap, steamdir + targetMap + 'forge_halo.map')
-        os.link(steamdir + VanillaUnlock, steamdir + targetUnlock + 'unlockdb.xml')
+        os.link(steamdir + VanillaFiles + '/' + mod.fileName, steamdir + mod.target + mod.fileName)
 
 def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
-    if os.path.isdir(steamdir + ModFolder) & os.path.isdir(steamdir + ModFolder + VanillaFiles)  == 1:
-        print("Directories = OK")
-        if os.path.isfile(steamdir + VanillaPak) & os.path.isfile(steamdir + VanillaMap) & os.path.isfile(steamdir + ModPak) & os.path.isfile(steamdir + ModMap) == 1:
-            print("Files in MODS folder = OK\n")
-            userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
-            if userInput == "1":
-                os.system('cls')
-                print("Syncing Vanilla Files to MCC")
-                unlinkFiles()
-                linkFiles(False)
-                print("COMPLETE")
-                os.system('pause')
-            elif userInput == "2":
-                os.system('cls')
-                print("Syncing Modded Files to MCC")
-                unlinkFiles()
-                linkFiles(True)
-                print("COMPLETE")
-                os.system('pause')
-            else:
-                os.system('cls')
-                print("Invalid input")
-                time.sleep(2)
-                os.system('cls')
-                copyFiles()
-        else:
-            print("Missing Files - Either Vanilla[or]Modded forge_halo.map or MCC-WindowsNoEditor.pak not found within MODS folder")
+    if (verifyFiles()):
+        userInput = input("ENTER [ 1 ] - Copy Vanilla Files \nENTER [ 2 ] - Copy Modded Files\nINPUT: ")
+        if userInput == "1":
+            os.system('cls')
+            print("Syncing Vanilla Files to MCC")
+            for mod in modList:
+                unlinkFiles(mod)
+                linkFiles(mod, False)
+            print("COMPLETE")
             os.system('pause')
+        elif userInput == "2":
+            os.system('cls')
+            print("Syncing Modded Files to MCC")
+            for mod in modList:
+                unlinkFiles(mod)
+                linkFiles(mod, True)
+            print("COMPLETE")
+            os.system('pause')
+        else:
+            os.system('cls')
+            print("Invalid input")
+            time.sleep(2)
+            os.system('cls')
+            copyFiles()
     else:
         print("Improper File Structure, aborting.")
         os.system('pause')
 
 copyFiles()
-
-
