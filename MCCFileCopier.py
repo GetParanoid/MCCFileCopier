@@ -28,7 +28,7 @@ VanillaUnlock = ModFolder + '/Vanilla Files/unlockdb.xml'
 #Get MCC file locations for mods and maps
 targetPak = 'MCC/Content/Paks/'
 targetMap = 'haloreach/maps/'
-targetUnlock = 'data/ui'
+targetUnlock = 'data/ui/'
 
 def copyFiles():
     print("Made by reddit.com/u/GetParanoid - Contact for any issues and/or ideas\n")
