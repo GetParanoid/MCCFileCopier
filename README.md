@@ -15,7 +15,7 @@ How to Use:
 
 1. Extract MCCFileCopier.py to your desktop / wherever you want
 2. Launch MCCFileCopier.py
+3. When asked for MCC install location, type YES if it's on your C: drive, type NO if it's on another drive and paste in the location
 3. Enter 1 or 2 (1 - Copies Vanilla Files, 2 - Copies Modded Files)
 4. Hit Enter
 
-If your game is installed on a different drive than your C: drive, open MCCFileCopier.py in notepad and edit "steamdir" to your MCC install
