@@ -44,4 +44,7 @@ def findMCC():
                 print("MCC directory not found")
         locationFile.write(steamdir)
         locationFile.close()
+        for i in range(0,len(steamdir)):
+            if steamdir[i] == '\\':
+                steamdir[i] = '/'
         return steamdir
