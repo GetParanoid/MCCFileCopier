@@ -5,9 +5,11 @@
 ###########################################
 import time
 import os
+from findMCC import findMCC
 
-#Get Steam Directory
-steamdir = "C:/Program Files (x86)/Steam/steamapps/common/Halo The Master Chief Collection/"
+# Check where MCC location is
+steamdir = findMCC()
+print(steamdir)
 
 #Get Modded file directory(Using steamdir as base directory)
 ModFolder = 'MODS'
