@@ -48,4 +48,5 @@ def findMCC():
         for character in temp:
             if character == '\\':
                 character = '/'
+        steamdir.join(temp)
         return steamdir
