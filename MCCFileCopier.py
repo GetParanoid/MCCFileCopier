@@ -33,7 +33,7 @@ class unlock():
 #TODO: impliment file checking
 #make sure everything is in place
 def verifyFiles():
-    return null
+    return true
 
 #make a list of all mods
 modList = [pak, map, unlock]
