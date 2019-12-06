@@ -1,7 +1,7 @@
 ###########################################
-#Author: GetParanoid
+#Author: GetParanoid & https://github.com/pbustos97
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 2.0
+#Version: 1.5
 ###########################################
 import time
 import os
@@ -9,7 +9,9 @@ from findMCC import findMCC
 
 # Check where MCC location is
 steamdir = findMCC()
-print(steamdir)
+print()
+print('MCC Install Location: ' + steamdir)
+print()
 
 #Get Modded file directory(Using steamdir as base directory)
 ModFolder = 'MODS'
