@@ -45,8 +45,8 @@ def findMCC():
         locationFile.write(steamdir)
         locationFile.close()
         temp = list(steamdir)
-        for character in temp:
-            if character == '\\':
-                character = '/'
+        for i in range(0,len(steamdir)):
+            if temp[i] == '\\':
+                temp[i] = '/'
         steamdir.join(temp)
         return steamdir
