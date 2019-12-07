@@ -1,7 +1,8 @@
 ###########################################
-#Author: GetParanoid & https://github.com/pbustos97
+#Author: GetParanoid
+#Contributors: https://github.com/pbustos97 (findMCC.py), https://github.com/Ryan2537 (Complete restructure for easier mod adding)
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 2.0
+#Version: 2.1
 ###########################################
 import time
 import os
