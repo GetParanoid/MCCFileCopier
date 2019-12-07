@@ -19,3 +19,8 @@ How to Use:
 3. Enter 1 or 2 (1 - Copies Vanilla Files, 2 - Copies Modded Files)
 4. Hit Enter
 
+# How to add a new mod
+
+1. Open MCCFileCopier.py in a text edior of you choice (Recommended: NotePad++ or VSCODE)
+2. Find # HOW TO ADD A MOD(Line #24), follow these instructions
+3. Add the mod's class to modList = [ ]

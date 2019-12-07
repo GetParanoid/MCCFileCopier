@@ -17,7 +17,7 @@ def findMCC():
         locationFile = open('location.txt', 'r')
         steamdir = locationFile.read()
         if not findDir('mcclauncher.exe', steamdir):
-            raise Excpetion("MCC is located in wrong directory")
+            raise Exception("MCC is located in wrong directory")
         locationFile.close()
         return steamdir
     except:
