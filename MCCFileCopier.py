@@ -39,13 +39,13 @@ class ForgeMap():
 class UnearthedDLL():
     fileName = 'haloreach.dll'
     target = 'haloreach/'
-class UneartehdMap():
+class UnearthedMap():
     fileName = 'cex_prisoner.map'
     target = 'haloreach/maps/'
 
 #make a list of all mods you want to install / uninstall
 #Add mod to the following list(Do NOT enable conflicting mods ex: same fileName)
-modList = [ForgeMap, EnableForgePak]
+modList = [UnearthedDLL, UnearthedMap]
 
 def verifyFiles():
     if not os.path.isdir(steamdir + ModFolder):
