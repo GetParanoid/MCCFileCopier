@@ -22,5 +22,7 @@ How to Use:
 # How to add a new mod
 
 1. Open MCCFileCopier.py in a text edior of you choice (Recommended: NotePad++ or VSCODE)
-2. Find # HOW TO ADD A MOD(Line #24), follow these instructions
-3. Add the mod's class to modList = [ ]
+2. Add mod files to: \\Halo The Master Chief Collection\MODS
+3. Add a copy of the vanilla files to: \\Halo The Master Chief Collection\MODS\Vanilla Files
+4. Find # HOW TO ADD A MOD(Line #24), follow these instructions
+5. Add the mod's class to modList = [ ]
