@@ -9,9 +9,8 @@ from findMCC import findMCC
 
 # Check where MCC location is
 steamdir = findMCC()
-print()
-print('MCC Install Location: ' + steamdir)
-print()
+print('\nMCC Install Location: ' + steamdir + "\n")
+
 
 #Get Modded file directory(Using steamdir as base directory)
 ModFolder = '/MODS'
@@ -19,16 +18,33 @@ ModFolder = '/MODS'
 #Get Vanilla Files Directory(Using steamdir as base directory)
 VanillaFiles = ModFolder + "/Vanilla Files"
 
+
+
+
+# HOW TO ADD A MOD
+#Example Mod Below Copy/Paste to add a new one
+class ModName():                            #create a class with the Mod's name
+    fileName = 'MCC-WindowsNoEditor.pak'    #(Name of the mod's file)
+    target = 'MCC/Content/Paks/'            #(The mod's install location inside MCC)
+        # IMPORTANT : IF the mod has multiple files, add a new class for each file
+
 #create an object for each mod
-class Pak():
+class EnableForgePak():
     fileName = 'MCC-WindowsNoEditor.pak'
     target = 'MCC/Content/Paks/'
-class Map():
+class ForgeMap():
     fileName = 'forge_halo.map'
     target = 'haloreach/maps/'
+class UnearthedDLL():
+    fileName = 'haloreach.dll'
+    target = 'haloreach/'
+class UneartehdMap():
+    fileName = 'cex_prisoner.map'
+    target = 'haloreach/maps/'
 
-#make a list of all mods
-modList = [Pak, Map]
+#make a list of all mods you want to install / uninstall
+#Add mod to the following list(Do NOT enable conflicting mods ex: same fileName)
+modList = [ForgeMap, EnableForgePak]
 
 def verifyFiles():
     if not os.path.isdir(steamdir + ModFolder):
