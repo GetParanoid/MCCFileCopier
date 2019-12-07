@@ -39,7 +39,7 @@ class ForgeMap():
 class UnearthedDLL():
     fileName = 'haloreach.dll'
     target = 'haloreach/'
-class UnearthedMap()
+class UnearthedMap():
     fileName = 'cex_prisoner.map'
     target = 'haloreach/maps/'
 
