@@ -2,10 +2,11 @@
 #Author: GetParanoid
 #Contributors: https://github.com/pbustos97 (findMCC.py), https://github.com/Ryan2537 (Complete restructure for easier mod adding)
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 2.1
+#Version: 2.2
 ###########################################
 import time
 import os
+import shutil
 from findMCC import findMCC
 
 # Check where MCC location is
@@ -19,33 +20,21 @@ ModFolder = '/MODS'
 #Get Vanilla Files Directory(Using steamdir as base directory)
 VanillaFiles = ModFolder + "/Vanilla Files"
 
+#make a template for mods
+class Mod():
+    def __init__(self, fileName, target):
+        self.fileName = fileName
+        self.target = target
 
+#to add a mod just follow the template [NAME] = Mod([FILENAME], [TARGETLOCATION])
+#then add your mod to modList
 
+#create an instance for each mod
+forge = Mod('MCC-WindowsNoEditor.pak', 'MCC/Content/Paks/')
+forgeMap = Mod('forge_halo.map', 'haloreach/maps/')
 
-# HOW TO ADD A MOD
-#Example Mod Below Copy/Paste to add a new one
-class ModName():                            #create a class with the Mod's name
-    fileName = 'MCC-WindowsNoEditor.pak'    #(Name of the mod's file)
-    target = 'MCC/Content/Paks/'            #(The mod's install location inside MCC)
-        # IMPORTANT : IF the mod has multiple files, add a new class for each file
-
-#create an object for each mod
-class EnableForgePak():
-    fileName = 'MCC-WindowsNoEditor.pak'
-    target = 'MCC/Content/Paks/'
-class ForgeMap():
-    fileName = 'forge_halo.map'
-    target = 'haloreach/maps/'
-class UnearthedDLL():
-    fileName = 'haloreach.dll'
-    target = 'haloreach/'
-class UnearthedMap():
-    fileName = 'cex_prisoner.map'
-    target = 'haloreach/maps/'
-
-#make a list of all mods you want to install / uninstall
-#Add mod to the following list(Do NOT enable conflicting mods ex: same fileName)
-modList = [ForgeMap, EnableForgePak]
+#make a list of all mods
+modList = [forge, forgeMap]
 
 def verifyFiles():
     if not os.path.isdir(steamdir + ModFolder):
@@ -58,10 +47,13 @@ def verifyFiles():
         if not os.path.isfile(steamdir + ModFolder + '/' + mod.fileName):
             print(mod.fileName + ' not found in MODS folder')
             return False
-        if not os.path.isfile(steamdir + VanillaFiles + '/' + mod.fileName):
-            print(mod.fileName + ' not found in Vanilla Files folder')
+        if not os.path.isfile(steamdir + mod.target + mod.fileName):
+            print(mod.fileName + ' not found in game files')
             return False
-    print("Files in MODS folder = OK")
+        if not os.path.isfile(steamdir + VanillaFiles + '/' + mod.fileName):
+            print(mod.fileName + ' not found in Vanilla Files\nCopying to Vanilla files')
+            shutil.copyfile(steamdir + mod.target + mod.fileName, steamdir + VanillaFiles + '/' + mod.fileName)
+    print("Files in MODS folder = OK\n")
     return True
 
 def unlinkFiles(mod):
