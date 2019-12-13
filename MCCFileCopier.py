@@ -6,6 +6,7 @@
 ###########################################
 import time
 import os
+import shutil
 from findMCC import findMCC
 
 # Check where MCC location is
@@ -46,9 +47,12 @@ def verifyFiles():
         if not os.path.isfile(steamdir + ModFolder + '/' + mod.fileName):
             print(mod.fileName + ' not found in MODS folder')
             return False
-        if not os.path.isfile(steamdir + VanillaFiles + '/' + mod.fileName):
-            print(mod.fileName + ' not found in Vanilla Files folder')
+        if not os.path.isfile(steamdir + mod.target + mod.fileName):
+            print(mod.fileName + ' not found in game files')
             return False
+        if not os.path.isfile(steamdir + VanillaFiles + '/' + mod.fileName):
+            print(mod.fileName + ' not found in Vanilla Files\nCopying to Vanilla files')
+            shutil.copyfile(steamdir + mod.target + mod.fileName, steamdir + VanillaFiles + '/' + mod.fileName)
     print("Files in MODS folder = OK\n")
     return True
 
