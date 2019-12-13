@@ -1,7 +1,8 @@
 ###########################################
-#Author: GetParanoid & https://github.com/pbustos97
+#Author: GetParanoid
+#Contributors: https://github.com/pbustos97 (findMCC.py), https://github.com/Ryan2537 (Complete restructure for easier mod adding)
 #Description: Simple python script that helps swapping your modded files and your vanilla files for MCC.
-#Version: 1.5
+#Version: 2.2
 ###########################################
 import time
 import os
@@ -9,9 +10,8 @@ from findMCC import findMCC
 
 # Check where MCC location is
 steamdir = findMCC()
-print()
-print('MCC Install Location: ' + steamdir)
-print()
+print('\nMCC Install Location: ' + steamdir + "\n")
+
 
 #Get Modded file directory(Using steamdir as base directory)
 ModFolder = '/MODS'
@@ -24,6 +24,9 @@ class Mod():
     def __init__(self, fileName, target):
         self.fileName = fileName
         self.target = target
+
+#to add a mod just follow the template [NAME] = Mod([FILENAME], [TARGETLOCATION])
+#then add your mod to modList
 
 #create an instance for each mod
 forge = Mod('MCC-WindowsNoEditor.pak', 'MCC/Content/Paks/')

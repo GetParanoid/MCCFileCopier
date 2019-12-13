@@ -19,3 +19,11 @@ How to Use:
 3. Enter 1 or 2 (1 - Copies Vanilla Files, 2 - Copies Modded Files)
 4. Hit Enter
 
+# How to add a new mod
+# Be sure to start with a vanilla install(NO MODS ACTIVATED) before installing new mods
+1. Add mod files to: \\Halo The Master Chief Collection\MODS
+2. Add a copy of the vanilla files to: \\Halo The Master Chief Collection\MODS\Vanilla Files
+3. Open MCCFileCopier.py in a text edior of you choice (Recommended: NotePad++ or VSCODE)
+4. Find # HOW TO ADD A MOD(Line #24), follow these instructions
+5. Add the mod to modList = [ ]
+6. Launch the program
