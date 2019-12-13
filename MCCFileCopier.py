@@ -19,16 +19,18 @@ ModFolder = '/MODS'
 #Get Vanilla Files Directory(Using steamdir as base directory)
 VanillaFiles = ModFolder + "/Vanilla Files"
 
-#create an object for each mod
-class Pak():
-    fileName = 'MCC-WindowsNoEditor.pak'
-    target = 'MCC/Content/Paks/'
-class Map():
-    fileName = 'forge_halo.map'
-    target = 'haloreach/maps/'
+#make a template for mods
+class Mod():
+    def __init__(self, fileName, target):
+        self.fileName = fileName
+        self.target = target
+
+#create an instance for each mod
+forge = Mod('MCC-WindowsNoEditor.pak', 'MCC/Content/Paks/')
+forgeMap = Mod('forge_halo.map', 'haloreach/maps/')
 
 #make a list of all mods
-modList = [Pak, Map]
+modList = [forge, forgeMap]
 
 def verifyFiles():
     if not os.path.isdir(steamdir + ModFolder):
@@ -44,7 +46,7 @@ def verifyFiles():
         if not os.path.isfile(steamdir + VanillaFiles + '/' + mod.fileName):
             print(mod.fileName + ' not found in Vanilla Files folder')
             return False
-    print("Files in MODS folder = OK")
+    print("Files in MODS folder = OK\n")
     return True
 
 def unlinkFiles(mod):
